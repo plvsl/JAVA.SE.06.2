@@ -8,16 +8,21 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class UniversalClass {
+    static HashMap storage = new HashMap<String, String>();
 
-    public static void main(String[] args) throws IOException {
-        HashMap<String, String> storage = new HashMap();
+    private static String getFilePath() {
+        System.out.println("Enter prop file path");
+
         Scanner scanner = new Scanner(System.in);
 
+        return scanner.next();
+    }
+
+    private static void importProperties() throws IOException {
         Properties prop = new Properties();
         InputStream input;
 
-
-        input = new FileInputStream(scanner.next());
+        input = new FileInputStream(getFilePath());
 
         prop.load(input);
 
@@ -25,6 +30,21 @@ public class UniversalClass {
             String value = prop.getProperty(propertyKey);
             storage.put(propertyKey, value);
         }
+    }
 
+    private static String getValueByKey(String key) throws IOException {
+        if (storage.isEmpty()) {
+            importProperties();
+            return storage.get(key).toString();
+        } else {
+            return storage.get(key).toString();
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println(getValueByKey("1"));
+        System.out.println(getValueByKey("2"));
+        System.out.println(getValueByKey("2"));
+        System.out.println(getValueByKey("3"));
     }
 }

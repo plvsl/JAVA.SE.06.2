@@ -5,24 +5,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.Scanner;
 
 public class UniversalClass {
     static HashMap storage = new HashMap<String, String>();
 
-    private static String getFilePath() {
-        System.out.println("Enter prop file path");
-
-        Scanner scanner = new Scanner(System.in);
-
-        return scanner.next();
-    }
-
-    private static void importProperties() throws IOException {
+    public static void importProperties() throws IOException {
         Properties prop = new Properties();
         InputStream input;
 
-        input = new FileInputStream(getFilePath());
+        input = new FileInputStream("resources/prop.properties");
 
         prop.load(input);
 

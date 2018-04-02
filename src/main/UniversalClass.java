@@ -13,7 +13,7 @@ public class UniversalClass {
         Properties prop = new Properties();
         InputStream input;
 
-        input = new FileInputStream("resources/prop.properties");
+        input = new FileInputStream("src/resources/prop.properties");
 
         prop.load(input);
 
